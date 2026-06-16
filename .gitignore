@@ -1,0 +1,18 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# --- Node ---
+node_modules/
+
+# --- OS / éditeurs ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# NB : les fichiers .pdf NE SONT PAS ignorés — ils doivent être versionnés
+#      pour être consultables à distance (cv_elodie.pdf, sources dans src/).
