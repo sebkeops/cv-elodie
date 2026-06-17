@@ -46,11 +46,15 @@
   /* --- Photo + badge nom --- */
   .hero{ padding:8mm 7mm 0; display:flex; flex-direction:column; align-items:center; }
   .hero .photo{
-    width:42mm; height:52mm;
-    object-fit:cover; object-position:50% 25%;
-    display:block; border-radius:10px;
+    width:44mm; height:54mm;
+    display:block; border-radius:10px; overflow:hidden;
     border:3px solid #fff;
     box-shadow:0 4px 14px rgba(0,0,40,.20);
+  }
+  .hero .photo img{
+    width:100%; height:100%;
+    object-fit:cover; object-position:50% 50%;
+    transform:scale(1.4); transform-origin:50% 52%;
     filter:grayscale(10%) contrast(1.02);
   }
   .hero .photo-ph{
@@ -212,7 +216,7 @@
   <!-- ============== COLONNE GAUCHE ============== -->
   <aside class="left">
     <div class="hero">
-      <img class="photo" src="photo_elodie.jpg" alt="Élodie SIGUENZA">
+      <div class="photo"><img src="src/PXL_20260617_090318272.jpg" alt="Élodie SIGUENZA"></div>
       <!-- Placeholder si la photo est absente : retirer l'<img> ci-dessus et décommenter :
       <div class="photo-ph"><svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-4 0-9 2-9 6v2h18v-2c0-4-5-6-9-6Z"/></svg></div>
       -->
