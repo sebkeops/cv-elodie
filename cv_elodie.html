@@ -43,33 +43,29 @@
    * ===================================================== */
   .left{ background:var(--creme); display:flex; flex-direction:column; }
 
-  /* --- Photo + badge nom --- */
-  .hero{ padding:8mm 7mm 0; display:flex; flex-direction:column; align-items:center; }
+  /* --- Photo + bandeau nom : en-tête en un seul bloc --- */
+  .hero{ padding:6mm 0 0; display:block; }
   .hero .photo{
-    width:44mm; height:54mm;
-    display:block; border-radius:10px; overflow:hidden;
-    border:3px solid #fff;
-    box-shadow:0 4px 14px rgba(0,0,40,.20);
+    width:100%; height:62mm;
+    display:block; border-radius:14px 14px 0 0; overflow:hidden;
   }
   .hero .photo img{
     width:100%; height:100%;
-    object-fit:cover; object-position:50% 50%;
-    transform:scale(1.4); transform-origin:50% 52%;
-    filter:grayscale(10%) contrast(1.02);
+    object-fit:cover; object-position:50% 28%;
+    filter:grayscale(8%) contrast(1.02);
   }
   .hero .photo-ph{
-    width:42mm; height:52mm; border-radius:10px;
+    width:100%; height:64mm; border-radius:0 0 14px 14px;
     background:linear-gradient(135deg,#d9d9e2,#c4c4d2);
-    border:3px solid #fff; box-shadow:0 4px 14px rgba(0,0,40,.20);
     display:flex; align-items:center; justify-content:center;
   }
-  .hero .photo-ph svg{ width:22mm; height:22mm; fill:#9595a8; }
+  .hero .photo-ph svg{ width:24mm; height:24mm; fill:#9595a8; }
 
   .namecard{
-    position:relative; margin-top:-9mm; width:54mm;
+    position:relative; z-index:2; margin-top:-6mm; width:100%;
     background:linear-gradient(135deg,var(--bleu) 0%,var(--bleu-d) 70%);
-    border-radius:7px;
-    padding:4.4mm 4mm 4mm;
+    border-radius:9px;
+    padding:5mm 6mm 4.6mm;
     text-align:center;
     box-shadow:0 6px 16px rgba(0,0,40,.28);
     color:#fff;
@@ -128,6 +124,7 @@
 
   /* Langues */
   .lang-row{ display:flex; align-items:center; justify-content:space-between; font-size:9pt; color:var(--charbon); }
+  .lang-row .lvls{ display:flex; gap:1.6mm; }
   .lang-row .lvl{
     font-size:7.6pt; font-weight:700; color:#fff; background:var(--bleu-clair);
     padding:1mm 2.4mm; border-radius:20px;
@@ -251,8 +248,8 @@
         <h2>Compétences</h2>
         <ul class="skills">
           <li>Gestion administrative &amp; financière</li>
-          <li>Marchés publics (MAPA)</li>
-          <li>Suivi et exécution budgétaire (Qualiac)</li>
+          <li>Marchés publics</li>
+          <li>Suivi et exécution budgétaire</li>
           <li>Engagements juridiques &amp; comptables</li>
           <li>Conformité des actes et procédures</li>
           <li>Conseil juridique à l'ordonnateur</li>
@@ -262,7 +259,7 @@
 
       <section class="l-sec">
         <h2>Langues</h2>
-        <div class="lang-row"><span>Anglais</span><span class="lvl">COURANT</span></div>
+        <div class="lang-row"><span>Anglais</span><span class="lvls"><span class="lvl">COURANT</span><span class="lvl">TOEIC 785</span></span></div>
         <div class="lang-note">Séjours longs en Australie, Canada et Nouvelle-Zélande.</div>
       </section>
 
@@ -304,7 +301,7 @@
             <li>Gestion administrative et financière des marchés publics</li>
             <li>Suivi budgétaire et contrôle de l'exécution des dépenses (Qualiac)</li>
             <li>Gestion des engagements juridiques et comptables</li>
-            <li>Suivi des factures, acomptes, avances et paiements (Chorus Pro)</li>
+            <li>Suivi des factures, acomptes, avances et paiements</li>
             <li>Contrôle de la conformité des actes et procédures</li>
             <li>Relations avec les fournisseurs et partenaires institutionnels</li>
           </ul>
@@ -319,7 +316,7 @@
           <ul>
             <li>Élaboration et suivi d'exécution du budget en dépenses et recettes (GFC)</li>
             <li>Participation à la rédaction de marché public (MAPA) ; rédaction des actes administratifs (DEMACT)</li>
-            <li>Rédaction et présentation du compte financier (partie ordonnateur)</li>
+            <li>Rédaction et présentation du compte financier (partie ordonnateur) au conseil d'administration</li>
             <li>Mise en place des plans de mise en sûreté ; gestion administrative et suivi des contrats</li>
             <li>Conseils juridiques à l'ordonnateur</li>
             <li>Encadrement d'équipe (16 agents Région — 1B, 2C)</li>
