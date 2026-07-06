@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV — Élodie SIGUENZA — Gestion financière / CREPS</title>
+<style>
+  :root{
+    --bleu:#000091;        /* bleu France  */
+    --bleu-d:#00006b;      /* bleu profond */
+    --bleu-clair:#6A9BD8;  /* bleu clair — badges, timeline, puces compétences */
+    --rouge:#c9191e;       /* rouge Marianne */
+    --creme:#f1efe9;       /* fond colonne gauche */
+    --texte:#222;
+    --charbon:#1b1b2b;
+    --gris:#6f6f7a;
+    --gris-l:#9a9aa6;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html,body{
+    font-family:'Inter','Source Sans 3','Segoe UI',Roboto,Arial,sans-serif;
+    color:var(--texte);
+    background:#fff;
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .page{
+    position:relative;
+    width:210mm; height:297mm;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:74mm 1fr;
+    overflow:hidden;
+    background:#fff;
+  }
+
+  /* ===================================================== *
+   *  COLONNE GAUCHE                                       *
+   * ===================================================== */
+  .left{ background:var(--creme); display:flex; flex-direction:column; }
+
+  /* --- Photo + bandeau nom : en-tête en un seul bloc --- */
+  .hero{ padding:4mm 0 0; display:block; }
+  .hero .photo{
+    width:100%; height:62mm;
+    display:block; border-radius:14px 14px 0 0; overflow:hidden;
+  }
+  .hero .photo img{
+    width:100%; height:100%;
+    object-fit:cover; object-position:50% 42%;
+    filter:grayscale(8%) contrast(1.02);
+  }
+  .hero .photo-ph{
+    width:100%; height:64mm; border-radius:0 0 14px 14px;
+    background:linear-gradient(135deg,#d9d9e2,#c4c4d2);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .hero .photo-ph svg{ width:24mm; height:24mm; fill:#9595a8; }
+
+  .namecard{
+    position:relative; z-index:2; margin-top:-2mm; width:100%;
+    background:linear-gradient(135deg,var(--bleu) 0%,var(--bleu-d) 70%);
+    border-radius:9px;
+    padding:5mm 6mm 4.6mm;
+    text-align:center;
+    box-shadow:0 6px 16px rgba(0,0,40,.28);
+    color:#fff;
+  }
+  .namecard .prenom{
+    display:block; font-size:11pt; font-weight:500;
+    letter-spacing:5px; text-transform:uppercase; color:#c9ccff;
+  }
+  .namecard .nom{
+    display:block; font-size:17pt; font-weight:800;
+    letter-spacing:3px; text-transform:uppercase; line-height:1.1; margin-top:1mm;
+  }
+  .namecard .role{
+    margin-top:2.4mm; padding-top:2.2mm; border-top:1px solid rgba(255,255,255,.28);
+    font-size:8pt; font-weight:600; color:#fff; line-height:1.35;
+  }
+  .namecard .role b{ color:#fff; }
+  .namecard .role span{ display:block; font-weight:400; color:#bcbfff; font-size:7.6pt; margin-top:.4mm; }
+
+  .left-body{ padding:6mm 7mm 6mm; display:flex; flex-direction:column; gap:3.5mm; }
+
+  .l-sec h2{
+    font-size:10.5pt; font-weight:800; text-transform:uppercase;
+    letter-spacing:1.6px; color:var(--bleu);
+    display:flex; align-items:center; gap:6px; margin-bottom:3.2mm;
+  }
+  .l-sec h2::after{ content:""; flex:1; height:2px; background:var(--rouge); opacity:.5; border-radius:2px; }
+
+  /* Tags outils */
+  .tagblock{ margin-bottom:2.2mm; }
+  .tagblock:last-child{ margin-bottom:0; }
+  .tagblock .lbl{
+    font-size:7.2pt; font-weight:700; letter-spacing:.7px; text-transform:uppercase;
+    color:var(--gris); margin-bottom:1.8mm;
+  }
+  .tags{ display:flex; flex-wrap:wrap; gap:1.7mm; }
+  .tags span{
+    font-size:7.8pt; font-weight:600; line-height:1;
+    padding:1.5mm 2.6mm; border-radius:5px; color:#fff;
+    background:var(--bleu-clair);
+  }
+  .tags.metier span{ background:var(--bleu-clair); }
+
+  /* Compétences clés (sobre, sans étoiles) */
+  .skills{ display:flex; flex-direction:column; gap:0; }
+  .skills li{
+    list-style:none; font-size:8.5pt; line-height:1.2; color:var(--charbon);
+    padding:1.1mm 0 1.1mm 6mm; position:relative;
+    border-bottom:1px solid rgba(0,0,60,.07);
+  }
+  .skills li:last-child{ border-bottom:0; }
+  .skills li::before{
+    content:""; position:absolute; left:0; top:50%; transform:translateY(-50%);
+    width:8px; height:8px; border-radius:2px; background:var(--bleu-clair);
+  }
+
+  /* Langues */
+  .lang-row{ display:flex; align-items:center; justify-content:space-between; font-size:9pt; color:var(--charbon); }
+  .lang-row .lvls{ display:flex; gap:1.6mm; }
+  .lang-row .lvl{
+    font-size:7.6pt; font-weight:700; color:#fff; background:var(--bleu-clair);
+    padding:1mm 2.4mm; border-radius:20px;
+  }
+  .lang-note{ font-size:7.4pt; color:var(--gris); margin-top:1.8mm; line-height:1.35; }
+
+  /* Infos perso */
+  .infos{ display:flex; flex-direction:column; gap:2.4mm; }
+  .infos li{ list-style:none; display:flex; gap:3mm; align-items:flex-start; font-size:8.3pt; line-height:1.3; color:var(--charbon); }
+  .infos .ic{
+    width:18px; height:18px; flex:0 0 auto; border-radius:50%;
+    background:var(--rouge); display:flex; align-items:center; justify-content:center;
+  }
+  .infos .ic svg{ width:10px; height:10px; fill:#fff; }
+
+  /* ===================================================== *
+   *  COLONNE DROITE                                       *
+   * ===================================================== */
+  .right{ padding:8mm 9mm 8mm 10mm; }
+
+  .r-head{
+    font-size:12.5pt; font-weight:800; text-transform:uppercase;
+    letter-spacing:1.4px; color:var(--charbon); line-height:1.05;
+  }
+
+  /* Profil */
+  .profil{ margin-bottom:3.2mm; }
+  .profil .r-head{ margin-bottom:2.6mm; }
+  .profil p{ font-size:8.7pt; line-height:1.4; text-align:justify; color:#34343d; }
+
+  /* Sections timeline */
+  .tl-head{ display:flex; align-items:center; gap:5mm; margin-bottom:3mm; }
+  .tl-head .badge{
+    width:13mm; height:13mm; border-radius:50%; flex:0 0 auto;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 10px rgba(0,0,40,.18);
+  }
+  .tl-head .badge svg{ width:6.5mm; height:6.5mm; fill:#fff; }
+  .tl-head.exp .badge{ background:var(--bleu); }
+  .tl-head.form .badge{ background:var(--bleu); }
+
+  .timeline{ position:relative; padding-left:31mm; }
+  .timeline::before{
+    content:""; position:absolute; top:0; bottom:3mm; left:6.5mm;
+    border-left:2px dotted var(--bleu-clair);
+  }
+  .tl-item{ position:relative; padding-bottom:2.6mm; }
+  .tl-item:last-child{ padding-bottom:0; }
+  .tl-item .yr{
+    position:absolute; left:-19mm; top:0; width:17mm; text-align:right;
+    font-size:8pt; font-weight:700; color:var(--gris); line-height:1.3;
+  }
+  .tl-item .yr small{ display:block; font-size:7pt; font-weight:600; color:var(--gris-l); }
+  .tl-item .dot{
+    position:absolute; left:-24.5mm; top:1mm; transform:translateX(-50%);
+    width:11px; height:11px; border-radius:50%; background:var(--bleu-clair);
+    border:2.5px solid #fff; box-shadow:0 0 0 2px var(--bleu-clair);
+  }
+  .timeline.form .tl-item .dot{ background:var(--bleu-clair); box-shadow:0 0 0 2px var(--bleu-clair); }
+
+  .tl-item .poste{
+    font-size:9.4pt; font-weight:800; text-transform:uppercase; letter-spacing:.4px;
+    color:var(--charbon); line-height:1.16;
+  }
+  .tl-item .org{ font-size:8.2pt; font-weight:700; color:var(--bleu); margin-top:1mm; line-height:1.28; }
+  .tl-item .ctx{ font-size:7.3pt; font-style:italic; color:var(--gris); margin-top:.8mm; line-height:1.3; }
+  .tl-item ul{ margin-top:1.6mm; display:flex; flex-direction:column; gap:.9mm; }
+  .tl-item ul li{ list-style:none; font-size:7.8pt; line-height:1.3; color:#3a3a44; padding-left:4.5mm; position:relative; }
+  .tl-item ul li::before{
+    content:""; position:absolute; left:0; top:.5em; width:5px; height:5px;
+    border-radius:50%; background:var(--rouge);
+  }
+
+  .exp-section{ margin-bottom:3mm; }
+
+  @page{ size:A4; margin:0; }
+  @media print{
+    html,body{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    .page{ margin:0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ============== COLONNE GAUCHE ============== -->
+  <aside class="left">
+    <div class="hero">
+      <div class="photo"><img src="src/elodie-photo.jpg" alt="Élodie SIGUENZA"></div>
+      <!-- Placeholder si la photo est absente : retirer l'<img> ci-dessus et décommenter :
+      <div class="photo-ph"><svg viewBox="0 0 24 24"><path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-4 0-9 2-9 6v2h18v-2c0-4-5-6-9-6Z"/></svg></div>
+      -->
+      <div class="namecard">
+        <span class="prenom">Élodie</span>
+        <span class="nom">Siguenza</span>
+        <div class="role"><b>Attachée d'administration de l'État</b>
+          <span>Gestion financière et comptable&nbsp;·&nbsp;Marchés publics&nbsp;·&nbsp;Encadrement</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="left-body">
+
+      <section class="l-sec">
+        <h2>Outils</h2>
+        <div class="tagblock">
+          <div class="lbl">Bureautique</div>
+          <div class="tags"><span>Word</span><span>Excel</span><span>PowerPoint</span></div>
+        </div>
+        <div class="tagblock">
+          <div class="lbl">Outils de gestion financière</div>
+          <div class="tags metier"><span>Chorus Pro</span><span>Qualiac</span><span>GFC</span></div>
+        </div>
+        <div class="tagblock">
+          <div class="lbl">Dématérialisation des actes</div>
+          <div class="tags metier"><span>DEMACT</span></div>
+        </div>
+      </section>
+
+      <section class="l-sec">
+        <h2>Compétences</h2>
+        <ul class="skills">
+          <li>Gestion financière et comptable</li>
+          <li>Exécution et contrôle des dépenses publiques</li>
+          <li>Marchés publics (procédures et exécution)</li>
+          <li>Contrôle de conformité et sécurisation des opérations</li>
+          <li>Relation avec l'ordonnateur et conseil juridique</li>
+          <li>Encadrement et accompagnement d'équipe</li>
+          <li>Contrôle interne financier et fiabilité des données</li>
+        </ul>
+      </section>
+
+      <section class="l-sec">
+        <h2>Langues</h2>
+        <div class="lang-row"><span>Anglais</span><span class="lvls"><span class="lvl">COURANT</span><span class="lvl">TOEIC 785</span></span></div>
+        <div class="lang-note">Séjours longs en Australie, Canada et Nouvelle-Zélande.</div>
+      </section>
+
+      <section class="l-sec">
+        <h2>Informations</h2>
+        <ul class="infos">
+          <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M7 2v2h10V2h2v2h2v18H3V4h2V2zm14 8H3v10h18zM5 6v2h14V6z"/></svg></span>Née le 05/10/1985</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 14.5 9 2.5 2.5 0 0 1 12 11.5Z"/></svg></span>33 impasse de l'Autan,<br>32600 Ségoufielle</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.6 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .6 3.6 1 1 0 0 1-.25 1z"/></svg></span>06.71.47.95.28</li>
+          <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M2 5h20v14H2zm2 2v.4l8 5 8-5V7zm16 3-8 5-8-5v7h16z"/></svg></span>elodie.siguenza@gmail.com</li>
+        </ul>
+      </section>
+
+    </div>
+  </aside>
+
+  <!-- ============== COLONNE DROITE ============== -->
+  <main class="right">
+
+    <section class="profil">
+      <div class="r-head">Profil</div>
+      <p>Attachée d'administration de l'État, je dispose d'une solide expérience de la gestion financière et comptable en établissement public : suivi budgétaire, exécution et contrôle des dépenses, marchés publics et conformité des procédures. Habituée à travailler en lien étroit avec l'ordonnateur, je veille à la fiabilité et à la sécurisation des opérations comptables ainsi qu'à la traçabilité des contrôles. Forte d'une expérience d'encadrement (équipe de 16 agents comme secrétaire générale), j'accompagne la montée en compétence des équipes et le respect des procédures. Rigoureuse, organisée et fiable, je souhaite mettre cette expertise au service du pilotage des dépenses publiques.</p>
+    </section>
+
+    <section class="exp-section">
+      <div class="tl-head exp">
+        <div class="badge"><svg viewBox="0 0 24 24"><path d="M9 4h6a2 2 0 0 1 2 2v1h3a2 2 0 0 1 2 2v3H2V9a2 2 0 0 1 2-2h3V6a2 2 0 0 1 2-2Zm6 3V6H9v1ZM2 14h8v2h4v-2h8v6H2z"/></svg></div>
+        <div class="r-head">Expériences professionnelles</div>
+      </div>
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="yr">Depuis<br><small>janv. 2026</small></div>
+          <div class="dot"></div>
+          <div class="poste">Chargée d'affaires administratives et financières</div>
+          <div class="org">Ministère de la Transition Écologique — Agence de l'eau Adour-Garonne, Toulouse (31)</div>
+          <div class="ctx">Établissement public</div>
+          <ul>
+            <li>Gestion administrative et financière des marchés publics</li>
+            <li>Suivi budgétaire et contrôle de l'exécution des dépenses (Qualiac)</li>
+            <li>Gestion des engagements juridiques et comptables</li>
+            <li>Suivi des factures, acomptes, avances et paiements (Chorus Pro)</li>
+            <li>Contrôle de la conformité des actes et des procédures</li>
+            <li>Relations avec les fournisseurs et partenaires institutionnels</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="yr">sept. 2022<br><small>déc. 2025</small></div>
+          <div class="dot"></div>
+          <div class="poste">Secrétaire générale</div>
+          <div class="org">Ministère de l'Éducation nationale</div>
+          <div class="ctx">Collège Albert Camus, Villemur-sur-Tarn (31) — cat. 3, 510 élèves, SEGPA / UPE2A &nbsp;·&nbsp; Lycée des métiers Eugène Montel, Colomiers (31) — lycée pro, GRETA, ERASMUS</div>
+          <ul>
+            <li>Élaboration et suivi d'exécution du budget en dépenses et recettes (GFC)</li>
+            <li>Participation à la rédaction de marchés publics (MAPA) ; rédaction des actes administratifs (DEMACT)</li>
+            <li>Rédaction et présentation du compte financier (partie ordonnateur) au conseil d'administration</li>
+            <li>Conseils juridiques à l'ordonnateur</li>
+            <li>Encadrement d'une équipe de 16 agents et accompagnement de leur montée en compétence</li>
+            <li>Gestion administrative et suivi des contrats</li>
+          </ul>
+        </div>
+
+        <div class="tl-item">
+          <div class="yr">2014<br><small>2022</small></div>
+          <div class="dot"></div>
+          <div class="poste">Professeure des écoles</div>
+          <div class="org">Ministère de l'Éducation nationale — académies de Reims et Toulouse</div>
+          <ul>
+            <li>Différents postes occupés dans les académies de Reims et Toulouse</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="tl-head form">
+        <div class="badge"><svg viewBox="0 0 24 24"><path d="M12 3 1 9l11 6 9-4.9V17h2V9zM5 13.2V17l7 4 7-4v-3.8l-7 3.8z"/></svg></div>
+        <div class="r-head">Formations</div>
+      </div>
+      <div class="timeline form">
+
+        <div class="tl-item">
+          <div class="yr">2022</div>
+          <div class="dot"></div>
+          <div class="poste">Attachée d'Administration de l'État</div>
+          <div class="org">IRA de Bastia (2A)</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="yr">2008</div>
+          <div class="dot"></div>
+          <div class="poste">Master Management et Ingénierie Économique</div>
+          <div class="org">Université de Paris-Est, Marne-la-Vallée (77)</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="yr">2003</div>
+          <div class="dot"></div>
+          <div class="poste">Baccalauréat Général « Économique et Social »</div>
+          <div class="org">Lycée Jean Jaurès, Reims (51)</div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+</div>
+</body>
+</html>
